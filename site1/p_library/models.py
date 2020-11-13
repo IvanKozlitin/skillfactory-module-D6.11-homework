@@ -57,6 +57,7 @@ class Book(models.Model):
                                 verbose_name="Издательство")
     copy_count = models.SmallIntegerField(default=1, verbose_name="Количество копий")
     price = models.FloatField(verbose_name="Стоимость")
+    image = models.ImageField(upload_to='books_images/%Y/%m/%d', blank=True, verbose_name='Ссылка картинки')
     friends = models.ManyToManyField(
         Friend,
         through='WhenTook',
@@ -68,6 +69,16 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+# Вывод картинок в админке!
+    def image_img(self):
+        if self.image:
+            from django.utils.safestring import mark_safe
+            return mark_safe(u'<a href="{0}" target="_blank"><img src="{0}" width="60"/></a>'.format(self.image.url))
+        else:
+            return '(Нет изображения)'
+    image_img.short_description = 'Картинка'
+    image_img.allow_tags = True
 
 
 class WhenTook(models.Model):

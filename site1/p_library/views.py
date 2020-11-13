@@ -12,7 +12,7 @@ from django.http.response import HttpResponseRedirect
 
 
 def books_list(request):
-    template = loader.get_template('base.html')
+    template = loader.get_template('list_book.html')
     books = Book.objects.all()
     biblio_data = {
         "title": "мою библиотеку",
@@ -36,35 +36,35 @@ def book_increment(request):
     if request.method == 'POST':
         book_id = request.POST['id']
         if not book_id:
-            return redirect('/index/')
+            return redirect('/')
         else:
             book = Book.objects.filter(id=book_id).first()
             if not book:
-                return redirect('/index/')
+                return redirect('/')
             book.copy_count += 1
             book.save()
-        return redirect('/index/')
+        return redirect('/')
     else:
-        return redirect('/index/')
+        return redirect('/')
 
 
 def book_decrement(request):
     if request.method == 'POST':
         book_id = request.POST['id']
         if not book_id:
-            return redirect('/index/')
+            return redirect('/')
         else:
             book = Book.objects.filter(id=book_id).first()
             if not book:
-                return redirect('/index/')
+                return redirect('/')
             if book.copy_count < 1:
                 book.copy_count = 0
             else:
                 book.copy_count -= 1
             book.save()
-        return redirect('/index/')
+        return redirect('/')
     else:
-        return redirect('/index/')
+        return redirect('/')
 
 
 def publishing_house(request):

@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
 {% block list_books %}
+    {% load static %}
     <h1>Добро пожаловать в {{ title }}</h1><br>
     <h4>Тут собрано {{ books|length }} книг из моей личной коллекции.</h4>
 
-    <table border="1">
+    <table class="table table-bordered">
         {% for book in books %}
         <tr>
             <td>{{ forloop.counter }}</td>
+            <td>
+                {% if book.image.url is not None %}
+                    <img src="{{ book.image.url }}" alt="Обложка книги" width="130">
+                {% endif %}
+            </td>
             <td>{{ book.title }}</td>
             <td>{{ book.ISBN }}</td>
             <td>{{ book.description }}</td>

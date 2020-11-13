@@ -4,8 +4,9 @@ from .models import (Book, Author, PublishingHouse, WhenTook, Friend)
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'year_release', 'ISBN')
+    list_display = ('title', 'author', 'year_release', 'ISBN', 'image_img',)
     list_filter = ('copy_count', 'year_release',)
+    readonly_fields = ['image_img', ]
     # fields = ('ISBN', 'title', 'description', 'year_release', 'author', 'price', 'copy_count')
 
 
