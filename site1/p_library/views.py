@@ -12,8 +12,13 @@ from django.http.response import HttpResponseRedirect
 
 
 def books_list(request):
+    template = loader.get_template('base.html')
     books = Book.objects.all()
-    return HttpResponse(books)
+    biblio_data = {
+        "title": "мою библиотеку",
+        "books": books,
+    }
+    return HttpResponse(template.render(biblio_data, request))
 
 
 def index(request):
