@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список друзей, что взяли книги</title>
+    <!-- Подключаем Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+</head>
+<body>
+    <h1 class="d-flex justify-content-center">Какие книги взяли мои друзья</h1>
+    <br>
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-group">
+                    {% for whentook in my_list %}
+                        <li class="list-group-item">
+                            <p>{{ whentook }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+    </div>
+
+
+    <!-- Подключаем jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Подключаем Bootstrap JS -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+</body>
+</html>
