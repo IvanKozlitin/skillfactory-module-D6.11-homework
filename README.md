@@ -17,4 +17,4 @@
 - Вы можете увидеть список друзей кто и какие книги взял у вас почитать, и какого числа это было http://127.0.0.1:8000/friends-list/
 - В админ панели вы можете добавлять, редактировать, удалять: Книги, Авторов, Друзей, Издательства, Книги у друзей (Кто какую книгу взял)
 
-**https://github.com/IvanKozlitin/skillfactory-module-D6.11-homework/archive/main.zip**
+**Ссылка для скачивания программы: https://github.com/IvanKozlitin/skillfactory-module-D6.11-homework/archive/main.zip**
